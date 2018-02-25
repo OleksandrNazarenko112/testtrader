@@ -15,12 +15,12 @@ var testQuestions = [
 },
 {
 	question: 'Лучшие сигналы ...',
-	answers: ['На сверхсекретном канале в телеграмме', 'В группе “Ебучий случай”', 'В автомастерской у Ашота'],
+	answers: ['На сверх секретном канале в Telegram', 'В группе “Ебучий случай”', 'В автомастерской у Ашота'],
 	illustration: 'img/ashot.jpg',
 	value: [1, 2, 3]
 },
 {
-	question: 'Когда я слышу что заниматься криптой уже поздно',
+	question: 'Когда я слышу что заниматься криптой уже поздно:',
 	answers: ['Я показываю свой холодный и горячий', 'Кусаю локти', 'Бросаю все и ухожу доить Буренку потому что биток уже по 10, а нет -  по 8, хотя уже по 12'],
 	illustration: 'img/cold-and-hot.jpg',
 	value: [1, 2, 3]
@@ -152,6 +152,7 @@ function testResultsShow() {
 	$('.start-btn').addClass('hide');
 	$('.question-items').addClass('hide');
 	$('.title').css({'height': 'auto','padding-bottom': '20px'});
+	$('.share-container').show();
 
 }
 
@@ -187,4 +188,22 @@ for(var d = 0; d < testResult.length; d++){
 	$('.preload').append('<img src="'+testResult[d].illustration+'">');
 
 }
+
+//share window position
+    $('.share-container ul li a').on('click', function () {
+
+        var w = 500, h = 500,
+        left = (screen.width / 2) - (w / 2);
+        popupWindow = window.open(this.href, '', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=1, copyhistory=no, width=' + w + ', height=' + h + ', top=100, left=' + left);
+        popupWindow.focus();
+        return false;
+
+
+    })
+//Btc rate
+    $.getJSON('https://blockchain.info/ru/ticker', function(data){
+
+		$('header p span').text(data.USD.sell.toFixed(2)+' USD');
+
+	});
 
