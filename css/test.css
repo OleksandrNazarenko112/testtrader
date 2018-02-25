@@ -1,0 +1,122 @@
+body {
+	  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+main {
+	 flex: 1;
+}
+/*-- resets --*/
+body a {
+	text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+}
+
+p {
+	margin: 0;
+	line-height: 1.8em;
+}
+
+ul,
+label {
+	margin: 0;
+	padding: 0;
+}
+ul {
+	list-style: none;
+}
+body a:hover {
+	text-decoration: none;
+}
+.slick-slide, .btn, .btn:focus {
+	outline: none!important;
+	box-shadow: none;
+	border: none;
+}
+input[type=radio]:focus+label::before {
+    background-image: none !important;
+    outline: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+/*-- //resets --*/
+.question-items {
+	height: 260px;
+}
+.title {
+
+	text-align: center;
+	font-size: 31px;
+	height: 70px;
+}
+.description {
+    font-size: 18px;
+    padding: 20px;
+    text-align: justify;
+    line-height: 24px;
+}
+.illustration {
+
+width: 100%;
+
+    height: 360px;
+    object-fit: contain;
+}
+.illustration-container {
+	border-left: 1px solid #ccc;
+}
+.jumbotron {
+	margin-bottom: 0;
+}
+.jumbotron p {
+    margin-bottom: 0;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 26px;
+}
+.jumbotron h3 {
+	margin-bottom: 20px;
+} 
+.question-container {
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	padding: 20px;
+	margin: 10% 0 5% 0;
+
+}
+.radio label::after {
+	top: 7px;
+}
+.radio label {
+	font-size: 16px;
+}
+.radio label::before {
+	top: 4px;
+}
+.results-name {
+	text-align: center;
+	text-transform: uppercase;
+	display: inline-block;
+	    background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+                radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+                    padding: 20px 50px 20px 50px;
+    border-radius: 39px;
+    color: #eee;
+}
+.footer {
+    padding: 1rem 0;
+    text-align: center;
+    background-color: #464646;
+}
+.footer a {
+	color: #fff;
+}
