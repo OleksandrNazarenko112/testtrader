@@ -196,7 +196,6 @@ header p {
 @media(max-width:1199px) {
 	.title {
 		height: auto;
-		margin-bottom: 20px;
 	}
 	.description {
 		padding: 20px 0;
@@ -214,13 +213,16 @@ header p {
 	}
 	.question-items {
 		height: auto;
-		margin-bottom: 20px;
+		margin: 20px 0;
 	}
 	.jumbotron {
 		margin-bottom: 20px;
 	}
 	header p {
 		font-size: 17px;
+	}
+	.results-name {
+		font-size: 20px;
 	}
 }
 
