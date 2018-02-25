@@ -60,7 +60,7 @@ input[type=radio]:focus+label::before {
 }
 .description {
     font-size: 18px;
-    padding: 20px;
+    padding: 20px 20px 20px 0;
     text-align: justify;
     line-height: 24px;
 }
@@ -108,7 +108,7 @@ width: 100%;
 	display: inline-block;
 	    background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
                 radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
-                    padding: 20px 50px 20px 50px;
+                    padding: 20px 50px;
     border-radius: 39px;
     color: #eee;
 }
@@ -119,4 +119,7 @@ width: 100%;
 }
 .footer a {
 	color: #fff;
+}
+.preload{
+	display: none;
 }

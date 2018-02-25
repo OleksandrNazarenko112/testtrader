@@ -5,7 +5,6 @@ var testTitle = {
 	illustration: 'img/illustration-to-first-page.jpg'
 };
 
-
 var testQuestions = [
 
 {
@@ -72,6 +71,7 @@ var testQuestions = [
 
 ];
 var testResult =[{
+
 	title: 'Твой результат:',
 	resultsName: 'Восходящая криптозвезда!', 
 	description: 'Твое чутье способно принести тебе миллионы! Рокфеллер будет тебе завидовать!',
@@ -106,9 +106,8 @@ var testResult =[{
 	tipTitle: 'Подсказка дня!',
 	tipText: 'Используй площадку <a href="https://bitboard.trade/">bitboard.trade</a> для покупки или продажи любых услуг за Bitcoin. Да прибудет с тобой криптовалюта!'
 }
+];
 
-
-]
 var counter= 0
 var overallScore = 0
 
@@ -177,6 +176,15 @@ if(counter>testQuestions.length & overallScore > 0){
 });
 
 
+//preload images for better perfomance
+for(var k = 0; k < testQuestions.length; k++){
 
+	$('.preload').append('<img src="'+testQuestions[k].illustration+'">');
 
+}
+for(var d = 0; d < testResult.length; d++){
+
+	$('.preload').append('<img src="'+testResult[d].illustration+'">');
+
+}
 
