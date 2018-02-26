@@ -161,6 +161,10 @@ function testResultsShow() {
 	$('.share-container').show();
 
 }
+if(counter == testQuestions.length){
+
+		$('.start-btn').text('Посмотреть результат');
+}
 
 if(counter>testQuestions.length & overallScore==0){
 	testResultsShow();
