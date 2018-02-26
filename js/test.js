@@ -68,13 +68,34 @@ var testQuestions = [
 	value: [1, 2, 3]
 },
 {
-	question: 'Серьезные майнинеры отличаются...',
+	question: 'Серьезные майнеры отличаются...',
 	answers: ['Высоким ростом', 'Высоким уровнем интеллекта', 'Высокими затратами на электроэнергию'],
 	illustration: 'img/mining-fermer.jpg',
 	value: [1, 2, 3]
+},
+{	question: 'Что такое Bitcoin?',
+	answers: ['Это пузырь', 'Это пирамида', 'Это дебильный вопрос!'],
+	illustration: 'img/piramida.jpg',
+	value: [1, 2, 3]
+},
+{
+	question: 'Где лучший ассортимент видеокарт?',
+	answers: ['В гипермаркете - «Лучший ассортимент видеокарт»', 'У невнятного барыги Валеры', 'Свой вариант!'],
+	illustration: 'img/gpu.jpg',
+	value: [1, 2, 3]
+},
+{
+	question: 'Что такое ICO?',
+	answers: ['Игра для PlayStation', 'Геморрой', 'Способ заработать'],
+	illustration: 'img/ico.jpg',
+	value: [1, 2, 3]
+},
+{
+	question: 'Вам понравился тест?',
+	answers: ['Да', 'Да', 'Да'],
+	illustration: 'img/test-over.jpg',
+	value: [1, 2, 3]
 }
-
-
 ];
 var testResult =[{
 
@@ -200,7 +221,7 @@ for(var d = 0; d < testResult.length; d++){
 }
 
 //share window position
-    $('.share-container ul li a').on('click', function () {
+    $('.share-container ul li:not(:first-child) a').on('click', function () {
 
         var w = 500, h = 500,
         left = (screen.width / 2) - (w / 2);
@@ -216,4 +237,19 @@ for(var d = 0; d < testResult.length; d++){
 		$('header p span').text(data.USD.sell.toFixed(2)+' USD');
 
 	});
+
+//copy-to-clipboard 
+var linkToClipboard = window.location.href
+$('.copy-to-clipboard').attr('data-clipboard-text', linkToClipboard)
+new Clipboard('.copy-to-clipboard');
+
+//tooltip
+$('.copy-to-clipboard').tooltipster({
+   animation: 'fade',
+   delay: 200,
+   theme: 'tooltipster-punk',
+   trigger: 'click',
+   maxWidth: 80,
+   timer: 1000
+});
 
