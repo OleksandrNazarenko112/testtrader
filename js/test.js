@@ -227,7 +227,7 @@ if (counter>testQuestions.length) {
 	if(overallScore >= maxScore){
 		testResultShow = testResult.length-1;
 	}
-	if(overallScore == minScore){
+	if(overallScore <= minScore){
 		testResultShow = 1;
 	}
 	if(overallScore>minScore && overallScore < maxScore ){
