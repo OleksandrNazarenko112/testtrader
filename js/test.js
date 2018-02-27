@@ -21,7 +21,7 @@ var testQuestions = [
 },
 {
 	question: 'Когда я слышу что заниматься криптой уже поздно:',
-	answers: ['Я показываю свой холодный и горячий', 'Кусаю локти', 'Бросаю все и ухожу доить Буренку потому что биток уже по 10, а нет -  по 8, хотя уже по 12'],
+	answers: ['Кусаю локти', 'Бросаю все и ухожу доить Буренку потому что биток уже по 10, а нет -  по 8, хотя уже по 12', 'Показываю свой холодный и горячий'],
 	illustration: 'img/cold-and-hot.jpg',
 	value: [1, 2, 3]
 },
@@ -98,7 +98,16 @@ var testQuestions = [
 }
 ];
 
-var testResult =[{
+var testResult =[
+{
+	title:'Твой результат:',
+	resultsName: 'Настя',
+	description: 'Ты не ответил ни на один вопрос. Поздравляем - Ты Настя!',
+	illustration: 'img/nastya-result.jpg',
+	tipTitle: 'Подсказка дня!',
+	tipText: 'Используй площадку <a href="https://bitboard.trade/">bitboard.trade</a> для покупки или продажи любых услуг за Bitcoin. Да прибудет с тобой криптовалюта!'
+},
+{
 
 	title: 'Твой результат:',
 	resultsName: 'Восходящая криптозвезда!', 
@@ -124,21 +133,37 @@ var testResult =[{
 	tipTitle: 'Подсказка дня!',
 	tipText: 'А ты знал что не обязательно торговать на бирже или майнить чтоб получить Bitcoin? Достаточно продать любой товар на площадке <a href="https://bitboard.trade/">bitboard.trade</a> и у тебя в «кармане» самая дорогая криптовалюта!'
 
-},
-
-{
-	title:'Твой результат:',
-	resultsName: 'Настя',
-	description: 'Ты не ответил ни на один вопрос. Поздравляем - Ты Настя!',
-	illustration: 'img/nastya-result.jpg',
-	tipTitle: 'Подсказка дня!',
-	tipText: 'Используй площадку <a href="https://bitboard.trade/">bitboard.trade</a> для покупки или продажи любых услуг за Bitcoin. Да прибудет с тобой криптовалюта!'
 }
 ];
 
-var counter= 0
-var overallScore = 0
+var counter= 0;
+var overallScore = 0;
+var sumAllScores = 0;
+var minScore = 0;
+var maxScore = 0;
+var testResultShow;
 
+
+//preload images for better perfomance
+for(var k = 0; k < testQuestions.length; k++){
+
+	minScore = minScore + Math.min.apply(null, testQuestions[k].value),
+	maxScore = maxScore + Math.max.apply(null, testQuestions[k].value);
+
+	$('.preload').append('<img src="'+testQuestions[k].illustration+'">');
+		for(var l=0; l<testQuestions[k].value.length; l++){
+
+		sumAllScores = sumAllScores+testQuestions[k].value[l];
+	}
+}
+for(var d = 0; d < testResult.length; d++){
+
+	$('.preload').append('<img src="'+testResult[d].illustration+'">');
+
+}
+
+var resultsQuantity = testResult.length-1; //because 0 score is default 
+var resultsInterval = Math.floor((maxScore - minScore)/resultsQuantity);
 
 
 $('.title').text(testTitle.title);
@@ -181,6 +206,11 @@ function testResultsShow() {
 	$('.question-items').addClass('hide');
 	$('.title').css({'height': 'auto','padding-bottom': '20px'});
 	$('.share-container').show();
+	$('.illustration').attr('src', testResult[testResultShow].illustration);
+	$('.description').removeClass('hide').text(testResult[testResultShow].description).css('text-align', 'center');;
+	$('.title').text(testResult[testResultShow].title);
+	$('<div class="results-name-container text-center"><h2 class="results-name">'+testResult[testResultShow].resultsName+'</h2></div>').insertAfter('.title');
+	$('.tip-jumbotron').append('<div class="jumbotron"><h3>'+testResult[testResultShow].tipTitle+'</h3><p>'+testResult[testResultShow].tipText+'</p></div>')
 
 }
 if(counter == testQuestions.length){
@@ -188,40 +218,30 @@ if(counter == testQuestions.length){
 		$('.start-btn').text('Посмотреть результат');
 }
 
-if(counter>testQuestions.length & overallScore==0){
-	testResultsShow();
-	$('.illustration').attr('src', testResult[3].illustration);
-	$('.description').removeClass('hide').text(testResult[3].description).css('text-align', 'center');;
-	$('.title').text(testResult[3].title);
-	$('<div class="results-name-container text-center"><h2 class="results-name">'+testResult[3].resultsName+'</h2></div>').insertAfter('.title');
-	$('.tip-jumbotron').append('<div class="jumbotron"><h3>'+testResult[3].tipTitle+'</h3><p>'+testResult[3].tipText+'</p></div>')
 
+if (counter>testQuestions.length) {
+	if(overallScore==0){
+		testResultShow = 0;
+	}
+	if(overallScore >= maxScore){
+		testResultShow = testResult.length-1;
+	}
+	if(overallScore == minScore){
+		testResultShow = 1;
+	}
+	if(overallScore>minScore && overallScore < maxScore ){
+		
+	}
+	 testResultsShow();
 }
-if(counter>testQuestions.length & overallScore > 0){
-	testResultsShow();
-	$('.illustration').attr('src', testResult[1].illustration);
-	$('.description').removeClass('hide').text(testResult[1].description).css('text-align', 'center');;
-	$('.title').text(testResult[1].title);
-	$('<div class="results-name-container text-center"><h2 class="results-name">'+testResult[1].resultsName+'</h2></div>').insertAfter('.title');
-	$('.tip-jumbotron').append('<div class="jumbotron"><h3>'+testResult[1].tipTitle+'</h3><p>'+testResult[1].tipText+'</p></div>')
 
-}
+
 });
 
 
-//preload images for better perfomance
-for(var k = 0; k < testQuestions.length; k++){
 
-	$('.preload').append('<img src="'+testQuestions[k].illustration+'">');
 
-}
-for(var d = 0; d < testResult.length; d++){
-
-	$('.preload').append('<img src="'+testResult[d].illustration+'">');
-
-}
-
-//share window position
+//share popup window position
     $('.share-container ul li:not(:first-child) a').on('click', function () {
 
         var w = 500, h = 500,
@@ -253,4 +273,8 @@ $('.copy-to-clipboard').tooltipster({
    maxWidth: 80,
    timer: 1000
 });
+
+
+console.log(resultsInterval)
+
 

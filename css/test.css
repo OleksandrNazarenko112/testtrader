@@ -242,11 +242,17 @@ header p {
     	justify-content: space-around;
     	float: none;
 	}
+	.container .jumbotron {
+		text-align: center;
+	}
 }
 
 @media(max-width: 320px) {
 	.title {
 		font-size: 22px;
+	}
+	.results-name {
+    font-size: 17px;
 	}
 }
 
