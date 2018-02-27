@@ -220,6 +220,7 @@ if(counter == testQuestions.length){
 
 
 if (counter>testQuestions.length) {
+
 	if(overallScore==0){
 		testResultShow = 0;
 	}
@@ -230,7 +231,7 @@ if (counter>testQuestions.length) {
 		testResultShow = 1;
 	}
 	if(overallScore>minScore && overallScore < maxScore ){
-		
+		testResultShow = 2;
 	}
 	 testResultsShow();
 }
