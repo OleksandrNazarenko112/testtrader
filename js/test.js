@@ -141,7 +141,9 @@ var overallScore = 0;
 var sumAllScores = 0;
 var minScore = 0;
 var maxScore = 0;
+var testResultindex = 0;
 var testResultShow;
+var resultsQuantity = testResult.length-1; //because 0 score is default 
 
 
 //preload images for better perfomance
@@ -162,8 +164,7 @@ for(var d = 0; d < testResult.length; d++){
 
 }
 
-var resultsQuantity = testResult.length-1; //because 0 score is default 
-var resultsInterval = Math.floor((maxScore - minScore)/resultsQuantity);
+
 
 
 $('.title').text(testTitle.title);
@@ -194,7 +195,7 @@ $('.start-btn').on('click', function(){
 
 $('input:radio[name="radio"]').change(
     function(){
-		
+
 		overallScore = parseInt($( "input:checked" ).val()) + parseInt(overallScore);
 		
     });
@@ -213,6 +214,7 @@ function testResultsShow() {
 	$('.tip-jumbotron').append('<div class="jumbotron"><h3>'+testResult[testResultShow].tipTitle+'</h3><p>'+testResult[testResultShow].tipText+'</p></div>')
 
 }
+
 if(counter == testQuestions.length){
 
 		$('.start-btn').text('Посмотреть результат');
@@ -221,22 +223,33 @@ if(counter == testQuestions.length){
 
 if (counter>testQuestions.length) {
 
-	if(overallScore==0){
+	if(overallScore == 0){
 		testResultShow = 0;
+
+	}else{
+
+	var resultsInterval = maxScore/resultsQuantity;
+
+console.log(overallScore)
+
+	while (maxScore > overallScore) {
+	
+	overallScore = resultsInterval + overallScore;
+	
+	testResultindex++
 	}
-	if(overallScore >= maxScore){
-		testResultShow = testResult.length-1;
+
+	testResult.reverse();
+
+	if(testResultindex+1 == testResult.length){
+		testResultShow = testResultindex-1;
+	}else{
+		testResultShow = testResultindex;
 	}
-	if(overallScore <= minScore){
-		testResultShow = 1;
-	}
-	if(overallScore>minScore && overallScore < maxScore ){
-		testResultShow = 2;
-	}
-	 testResultsShow();
 }
-
-
+console.log('testResultShow '+ testResultShow)
+	testResultsShow();
+}
 });
 
 
@@ -276,6 +289,6 @@ $('.copy-to-clipboard').tooltipster({
 });
 
 
-console.log(resultsInterval)
+
 
 
