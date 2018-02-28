@@ -138,25 +138,19 @@ var testResult =[
 
 var counter= 0;
 var overallScore = 0;
-var sumAllScores = 0;
-var minScore = 0;
 var maxScore = 0;
 var testResultindex = 0;
 var testResultShow;
 var resultsQuantity = testResult.length-1; //because 0 score is default 
 
 
-//preload images for better perfomance
+//preload images for better perfomance and maxScore for test
 for(var k = 0; k < testQuestions.length; k++){
 
-	minScore = minScore + Math.min.apply(null, testQuestions[k].value),
 	maxScore = maxScore + Math.max.apply(null, testQuestions[k].value);
 
 	$('.preload').append('<img src="'+testQuestions[k].illustration+'">');
-		for(var l=0; l<testQuestions[k].value.length; l++){
 
-		sumAllScores = sumAllScores+testQuestions[k].value[l];
-	}
 }
 for(var d = 0; d < testResult.length; d++){
 
@@ -165,107 +159,110 @@ for(var d = 0; d < testResult.length; d++){
 }
 
 
-
-
 $('.title').text(testTitle.title);
 $('.description').text(testTitle.description);
 $('.illustration').attr('src', testTitle.illustration);
 
 $('.start-btn').on('click', function(){
-		counter++;
+
+	counter++;
+
 	var questionIndex = counter-1;
+
 	if(counter==1){
-		$('	<ul class="question-items"></ul>').insertAfter('.title')
+
+		$('	<ul class="question-items"></ul>').insertAfter('.title');
+
 	}
 
-	if(questionIndex < testQuestions.length){
-		$('.question-items li').empty();
+	if (questionIndex < testQuestions.length) {
 
-	
+		$('.question-items li').empty();
 		$('.start-btn').removeClass('btn-danger').addClass('btn-success').text('Следующий вопрос');
 		$('.description').addClass('hide');
-
 		$('.title').text(testQuestions[questionIndex].question);
 		$('.illustration').attr('src', testQuestions[questionIndex].illustration);
 
 			for(var i =0; i < testQuestions[questionIndex].answers.length; i++){
- 				$('.question-items').append('<li><div class="radio"><input type="radio" name="radio" id="radio'+i+'" value="'+testQuestions[questionIndex].value[i]+'"><label for="radio'+i+'">'+testQuestions[questionIndex].answers[i]+'</label></div></li>');
-					}
 
+ 				$('.question-items').append('<li><div class="radio"><input type="radio" name="radio" id="radio'+i+'" value="'+testQuestions[questionIndex].value[i]+'"><label for="radio'+i+'">'+testQuestions[questionIndex].answers[i]+'</label></div></li>');
+			}
 
 $('input:radio[name="radio"]').change(
+
     function(){
 
 		overallScore = parseInt($( "input:checked" ).val()) + parseInt(overallScore);
 		
-    });
+ });
 
-}
+	}
 
 function testResultsShow() {
+
 	$('.start-btn').addClass('hide');
 	$('.question-items').addClass('hide');
 	$('.title').css({'height': 'auto','padding-bottom': '20px'});
 	$('.share-container').show();
 	$('.illustration').attr('src', testResult[testResultShow].illustration);
-	$('.description').removeClass('hide').text(testResult[testResultShow].description).css('text-align', 'center');;
+	$('.description').removeClass('hide').text(testResult[testResultShow].description).css('text-align', 'center');
 	$('.title').text(testResult[testResultShow].title);
 	$('<div class="results-name-container text-center"><h2 class="results-name">'+testResult[testResultShow].resultsName+'</h2></div>').insertAfter('.title');
-	$('.tip-jumbotron').append('<div class="jumbotron"><h3>'+testResult[testResultShow].tipTitle+'</h3><p>'+testResult[testResultShow].tipText+'</p></div>')
-
+	$('.tip-jumbotron').append('<div class="jumbotron"><h3>'+testResult[testResultShow].tipTitle+'</h3><p>'+testResult[testResultShow].tipText+'</p></div>');
 }
 
-if(counter == testQuestions.length){
+//show tests results
+if(counter == testQuestions.length) {
 
-		$('.start-btn').text('Посмотреть результат');
+	$('.start-btn').text('Посмотреть результат');
 }
 
+if (counter > testQuestions.length) {
 
-if (counter>testQuestions.length) {
+		if (overallScore == 0) {
 
-	if(overallScore == 0){
-		testResultShow = 0;
+			testResultShow = 0;
 
-	}else{
+		} else {	
 
-	var resultsInterval = maxScore/resultsQuantity;
+			var resultsInterval = maxScore/resultsQuantity;
 
-console.log(overallScore)
-
-	while (maxScore > overallScore) {
+			while (maxScore > overallScore) {
 	
-	overallScore = resultsInterval + overallScore;
+					overallScore = resultsInterval + overallScore;
 	
-	testResultindex++
-	}
+					testResultindex++
+			  }
 
-	testResult.reverse();
+		testResult.reverse();
 
-	if(testResultindex+1 == testResult.length){
-		testResultShow = testResultindex-1;
-	}else{
+		if (testResultindex+1 == testResult.length) {
+
+			testResultShow = testResultindex-1;
+
+		} else {
+
 		testResultShow = testResultindex;
-	}
-}
-console.log('testResultShow '+ testResultShow)
+
+			  }
+		}
+
 	testResultsShow();
+
 }
+
 });
 
-
-
-
 //share popup window position
-    $('.share-container ul li:not(:first-child) a').on('click', function () {
+$('.share-container ul li:not(:first-child) a').on('click', function () {
 
-        var w = 500, h = 500,
-        left = (screen.width / 2) - (w / 2);
-        popupWindow = window.open(this.href, '', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=1, copyhistory=no, width=' + w + ', height=' + h + ', top=100, left=' + left);
-        popupWindow.focus();
-        return false;
+    var w = 500, h = 500,
+    left = (screen.width / 2) - (w / 2);
+    popupWindow = window.open(this.href, '', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=1, copyhistory=no, width=' + w + ', height=' + h + ', top=100, left=' + left);
+   	popupWindow.focus();
+    return false;
 
-
-    })
+    });
 //Btc rate
     $.getJSON('https://blockchain.info/ru/ticker', function(data){
 
