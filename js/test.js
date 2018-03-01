@@ -27,7 +27,7 @@ var testQuestions = [
 },
 {
 	question: 'Что тебе больше нравиться?',
-	answers: ['Bitcoin', 'Etherium', 'Z- cash', 'Ripple', 'Светлое нефильтрованное'],
+	answers: ['Bitcoin', 'Etherium', 'Z - cash', 'Ripple', 'Светлое нефильтрованное'],
 	illustration: 'img/what-curency-do-you-like-more.jpg',
 	value: [1, 2, 3, 4, 5]
 },
@@ -59,13 +59,13 @@ var testQuestions = [
 	question: 'Петро это... ',
 	answers: ['Крипта', 'Имя владельца шоколадной фабрики', 'Компьютерный вирус'],
 	illustration: 'img/petro.jpg',
-	value: [1, 2, 3]
+	value: [3, 1, 2]
 },
 {
 	question: 'Если John McAfee не съест свой член то...',
 	answers: ['Я не интересуюсь членами', 'Я буду богатым человеком', 'Не понял про член! Требую объяснений!!!'],
 	illustration: 'img/eat-dick.png',
-	value: [1, 2, 3]
+	value: [2, 3, 1]
 },
 {
 	question: 'Серьезные майнеры отличаются...',
@@ -82,19 +82,19 @@ var testQuestions = [
 	question: 'Где лучший ассортимент видеокарт?',
 	answers: ['В гипермаркете - «Лучший ассортимент видеокарт»', 'У невнятного барыги Валеры', 'Свой вариант'],
 	illustration: 'img/gpu.jpg',
-	value: [1, 2, 3]
+	value: [1, 3, 2]
 },
 {
 	question: 'Что такое ICO?',
 	answers: ['Игра для PlayStation', 'Геморрой', 'Способ заработать'],
 	illustration: 'img/ico.jpg',
-	value: [1, 2, 3]
+	value: [1, 3, 2]
 },
 {
 	question: 'Вам понравился тест?',
 	answers: ['Да', 'Да', 'Да'],
 	illustration: 'img/test-over.jpg',
-	value: [1, 2, 3]
+	value: [3, 2, 1]
 }
 ];
 
