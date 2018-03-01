@@ -141,7 +141,9 @@ var overallScore = 0;
 var maxScore = 0;
 var testResultindex = 0;
 var testResultShow;
-var resultsQuantity = testResult.length-1; //because 0 score is default 
+var resultsQuantity = testResult.length-1; //because 0 score is default
+var CurrentUrl = window.location.href;
+var ogTitle =  $('meta[property="og:description"]').attr('content');
 
 
 //preload images for better perfomance and maxScore for test
@@ -271,8 +273,7 @@ $('.share-container ul li:not(:first-child) a').on('click', function () {
 	});
 
 //copy-to-clipboard 
-var linkToClipboard = window.location.href
-$('.copy-to-clipboard').attr('data-clipboard-text', linkToClipboard)
+$('.copy-to-clipboard').attr('data-clipboard-text', CurrentUrl)
 new Clipboard('.copy-to-clipboard');
 
 //tooltip
@@ -285,7 +286,15 @@ $('.copy-to-clipboard').tooltipster({
    timer: 1000
 });
 
+//share buttons
+$('.btn-vk').on('click', function(){
 
+	$('.btn-vk').attr('href', 'http://vkontakte.ru/share.php?url=' + CurrentUrl);
+});
 
+$('.btn-twitter').on('click', function(){
+
+	$('.btn-twitter').attr('href', 'https://twitter.com/intent/tweet?text=' + ogTitle + ' ' + CurrentUrl);
+});
 
 
