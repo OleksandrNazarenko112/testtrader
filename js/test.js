@@ -183,14 +183,14 @@ $('.start-btn').on('click', function(){
 		$('.title').text(testQuestions[questionIndex].question);
 		$('.illustration').attr('src', testQuestions[questionIndex].illustration);
 
-			for(var i =0; i < testQuestions[questionIndex].answers.length; i++){
+			for (var i =0; i < testQuestions[questionIndex].answers.length; i++){
 
  				$('.question-items').append('<li><div class="radio"><input type="radio" name="radio" id="radio'+i+'" value="'+testQuestions[questionIndex].value[i]+'"><label for="radio'+i+'">'+testQuestions[questionIndex].answers[i]+'</label></div></li>');
 			}
 
 $('input:radio[name="radio"]').change(
 
-    function(){
+    function() {
 
 		overallScore = parseInt($( "input:checked" ).val()) + parseInt(overallScore);
 		
