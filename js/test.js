@@ -1,7 +1,7 @@
 var testTitle = {
 
 	title: 'Пройди тест и узнай какой ты криптотрейдер.',
-	description: 'Этот тест создан с помощью секретной нейронной блокчейн сети с целью выявления наиболее эффективных трейдеров и похищением их для дальнейших экспериментов. Внимание вы проходите его на свой страх и риск! Чтоб начать тест нажмите большую красную кнопку.',
+	description: 'Этот тест создан с помощью секретной нейронной блокчейн сети с целью выявления наиболее эффективных трейдеров и похищением их для дальнейших экспериментов. <strong>ВНИМАНИЕ!</strong> Вы проходите его на свой страх и риск! Чтоб начать тест нажмите большую красную кнопку.',
 	illustration: 'img/illustration-to-first-page.jpg'
 };
 
@@ -162,7 +162,7 @@ for(var d = 0; d < testResult.length; d++){
 
 
 $('.title').text(testTitle.title);
-$('.description').text(testTitle.description);
+$('.description').html(testTitle.description);
 $('.illustration').attr('src', testTitle.illustration);
 
 $('.start-btn').on('click', function(){
@@ -287,14 +287,9 @@ $('.copy-to-clipboard').tooltipster({
 });
 
 //share buttons
-$('.btn-vk').on('click', function(){
+$('.btn-vk').attr('href', 'http://vkontakte.ru/share.php?url=' + CurrentUrl);
 
-	$('.btn-vk').attr('href', 'http://vkontakte.ru/share.php?url=' + CurrentUrl);
-});
+$('.btn-twitter').attr('href', 'https://twitter.com/intent/tweet?text=' + ogTitle + ' ' + CurrentUrl);
 
-$('.btn-twitter').on('click', function(){
-
-	$('.btn-twitter').attr('href', 'https://twitter.com/intent/tweet?text=' + ogTitle + ' ' + CurrentUrl);
-});
 
 
