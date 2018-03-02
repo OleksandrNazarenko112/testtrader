@@ -289,7 +289,7 @@ $('.copy-to-clipboard').tooltipster({
 });
 
 //share buttons
-$('.btn-facebook').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F' + CurrentUrl + '%2F&amp;src=sdkpreparse');
+$('.btn-facebook').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + CurrentUrl + '%2F&amp;src=sdkpreparse');
 $('.btn-vk').attr('href', 'http://vkontakte.ru/share.php?url=' + CurrentUrl);
 $('.btn-twitter').attr('href', 'https://twitter.com/intent/tweet?text=' + ogTitle + ' ' + CurrentUrl);
 
