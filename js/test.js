@@ -11,90 +11,90 @@ var testQuestions = [
 	question: 'Если быки побеждают медведей, обычно я:',
 	answers: ['Покупаю ', 'Продаю', 'Прекращаю пить и иду домой спать'],
 	illustration: 'img/medvedi.jpg',
-	value: [1, 2, 3]
+	value: [0, 1, 2]
 },
 {
 	question: 'Лучшие сигналы ...',
 	answers: ['На сверх секретном канале в Telegram', 'В группе “Ебучий случай”', 'В автомастерской у Ашота'],
 	illustration: 'img/ashot.jpg',
-	value: [1, 2, 3]
+	value: [0, 1, 2]
 },
 {
 	question: 'Когда я слышу что заниматься криптой уже поздно:',
 	answers: ['Кусаю локти', 'Бросаю все и ухожу доить Буренку потому что биток уже по 10, а нет -  по 8, хотя уже по 12', 'Показываю свой холодный и горячий'],
 	illustration: 'img/cold-and-hot.jpg',
-	value: [1, 2, 3]
+	value: [0, 1, 2]
 },
 {
 	question: 'Что тебе больше нравиться?',
 	answers: ['Bitcoin', 'Etherium', 'Z - cash', 'Ripple', 'Светлое нефильтрованное'],
 	illustration: 'img/what-curency-do-you-like-more.jpg',
-	value: [1, 2, 3, 4, 5]
+	value: [0, 1, 2, 3, 4]
 },
 {
 	question: 'Куда лучше вкладывать крипту?',
 	answers: ['Хранить на холодном кошельке', 'Покупать и продавать разные монеты', 'Я крипту вкладываю в Настю'],
 	illustration: 'img/Nastya.jpg',
-	value: [1, 2, 3]
+	value: [0, 1, 2]
 },
 {
 	question: 'Что изображено на этой картинке?',
 	answers: ['График изменения курсов за последние 12 месяцев', 'График изменения курсов за последние 24 месяца', 'График изменения курсов за последние 6 месяцев', 'Настя'],
 	illustration: 'img/graph.jpg',
-	value: [1, 2, 3, 4]
+	value: [0, 1, 2, 3]
 },
 {
 	question: 'Сатоши Накамото это...',
 	answers: ['Порно актер', 'Название японского виски', 'Создатель Bitcoin'],
 	illustration: 'img/satoshi-nakamoto.jpg',
-	value: [1, 2, 3]
+	value: [0, 1, 2]
 },
 {
 	question: 'Что лучше AMD или Nvidia?',
 	answers: ['AMD'],
 	illustration: 'img/amd.jpg',
-	value: [1]
+	value: [0]
 },
 {
 	question: 'Петро это... ',
 	answers: ['Крипта', 'Имя владельца шоколадной фабрики', 'Компьютерный вирус'],
 	illustration: 'img/petro.jpg',
-	value: [3, 1, 2]
+	value: [2, 0, 1]
 },
 {
 	question: 'Если John McAfee не съест свой член то...',
 	answers: ['Я не интересуюсь членами', 'Я буду богатым человеком', 'Не понял про член! Требую объяснений!!!'],
-	illustration: 'img/eat-dick.png',
-	value: [2, 3, 1]
+	illustration: 'img/eat-dick.jpg',
+	value: [1, 2, 0]
 },
 {
 	question: 'Серьезные майнеры отличаются...',
 	answers: ['Высоким ростом', 'Высоким уровнем интеллекта', 'Высокими затратами на электроэнергию'],
 	illustration: 'img/mining-fermer.jpg',
-	value: [1, 2, 3]
+	value: [0, 1, 2]
 },
 {	question: 'Что такое Bitcoin?',
 	answers: ['Это пузырь', 'Это пирамида', 'Это дебильный вопрос!'],
 	illustration: 'img/piramida.jpg',
-	value: [1, 2, 3]
+	value: [0, 1, 2]
 },
 {
 	question: 'Где лучший ассортимент видеокарт?',
 	answers: ['В гипермаркете - «Лучший ассортимент видеокарт»', 'У невнятного барыги Валеры', 'Свой вариант'],
 	illustration: 'img/gpu.jpg',
-	value: [1, 3, 2]
+	value: [0, 2, 1]
 },
 {
 	question: 'Что такое ICO?',
 	answers: ['Игра для PlayStation', 'Геморрой', 'Способ заработать'],
 	illustration: 'img/ico.jpg',
-	value: [1, 3, 2]
+	value: [0, 2, 1]
 },
 {
 	question: 'Вам понравился тест?',
 	answers: ['Да', 'Да', 'Да'],
 	illustration: 'img/test-over.jpg',
-	value: [3, 2, 1]
+	value: [2, 1, 0]
 }
 ];
 
@@ -138,6 +138,7 @@ var testResult =[
 
 var counter= 0;
 var overallScore = 0;
+var checked = 0;
 var maxScore = 0;
 var testResultindex = 0;
 var testResultShow;
@@ -195,7 +196,7 @@ $('input:radio[name="radio"]').change(
     function() {
 
 		overallScore = parseInt($( "input:checked" ).val()) + parseInt(overallScore);
-		
+		checked++
  });
 
 	}
@@ -211,6 +212,7 @@ function testResultsShow() {
 	$('.title').text(testResult[testResultShow].title);
 	$('<div class="results-name-container text-center"><h2 class="results-name">'+testResult[testResultShow].resultsName+'</h2></div>').insertAfter('.title');
 	$('.tip-jumbotron').append('<div class="jumbotron"><h3>'+testResult[testResultShow].tipTitle+'</h3><p>'+testResult[testResultShow].tipText+'</p></div>');
+	console.log(checked);
 }
 
 //show tests results
@@ -221,7 +223,7 @@ if(counter == testQuestions.length) {
 
 if (counter > testQuestions.length) {
 
-		if (overallScore == 0) {
+		if (checked == 0) {
 
 			testResultShow = 0;
 
@@ -287,8 +289,8 @@ $('.copy-to-clipboard').tooltipster({
 });
 
 //share buttons
+$('.btn-facebook').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F' + CurrentUrl + '%2Ftesttrader%2F&amp;src=sdkpreparse');
 $('.btn-vk').attr('href', 'http://vkontakte.ru/share.php?url=' + CurrentUrl);
-
 $('.btn-twitter').attr('href', 'https://twitter.com/intent/tweet?text=' + ogTitle + ' ' + CurrentUrl);
 
 
