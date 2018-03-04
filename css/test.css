@@ -2,7 +2,10 @@ body {
 	display: flex;
 	min-height: 100vh;
 	flex-direction: column;
-}
+background-image: -webkit-linear-gradient(300deg, #fdfbfb 0%, #ebedee 100%);
+background-image: -o-linear-gradient(300deg, #fdfbfb 0%, #ebedee 100%);
+background-image: linear-gradient(30deg, #fdfbfb 0%, #ebedee 100%);
+}		
 
 main {
 	flex: 1;
@@ -119,6 +122,7 @@ header p {
 	border-radius: 4px;
 	padding: 20px;
 	margin: 5% 0 20px 0;
+	background-color: #fff;
 }
 
 .radio label::after {
@@ -164,6 +168,7 @@ header p {
 	margin-bottom: 20px;
 	padding: 20px;
 	overflow: hidden;
+	background-color: #fff;
 }
 
 .share-container h4 {
@@ -174,6 +179,10 @@ header p {
 .share-container ul li {
 	float: left;
 	margin-right: 10px;
+	transition: all 0.5s;
+}
+.share-container ul li.animate{
+	transform: scale(1.2);
 }
 .share-container ul {
 	float: right;

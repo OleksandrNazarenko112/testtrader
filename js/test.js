@@ -1,6 +1,6 @@
 var testTitle = {
 
-	title: 'Пройди тест и узнай какой ты криптотрейдер.',
+	title: 'Пройди тест и узнай какой, ты криптотрейдер.',
 	description: 'Этот тест создан с помощью секретной нейронной блокчейн сети с целью выявления наиболее эффективных трейдеров и похищением их для дальнейших экспериментов. <strong>ВНИМАНИЕ!</strong> Вы проходите его на свой страх и риск! Чтоб начать тест нажмите большую красную кнопку.',
 	illustration: 'img/illustration-to-first-page.jpg'
 };
@@ -20,13 +20,13 @@ var testQuestions = [
 	value: [0, 1, 2]
 },
 {
-	question: 'Когда я слышу что заниматься криптой уже поздно:',
-	answers: ['Кусаю локти', 'Бросаю все и ухожу доить Буренку потому что биток уже по 10, а нет -  по 8, хотя уже по 12', 'Показываю свой холодный и горячий'],
+    question: 'Когда я слышу, что заниматься криптой уже поздно:',
+    answers: ['Кусаю локти', 'Бросаю все и ухожу доить Буренку, потому что биток уже по 10, а нет -  по 8, хотя уже по 12', 'Показываю свой холодный и горячий'],
 	illustration: 'img/cold-and-hot.jpg',
 	value: [0, 1, 2]
 },
 {
-	question: 'Что тебе больше нравиться?',
+    question: 'Что тебе больше нравится?',
 	answers: ['Bitcoin', 'Etherium', 'Z - cash', 'Ripple', 'Светлое нефильтрованное'],
 	illustration: 'img/what-curency-do-you-like-more.jpg',
 	value: [0, 1, 2, 3, 4]
@@ -39,7 +39,7 @@ var testQuestions = [
 },
 {
 	question: 'Что изображено на этой картинке?',
-	answers: ['График изменения курсов за последние 12 месяцев', 'График изменения курсов за последние 24 месяца', 'График изменения курсов за последние 6 месяцев', 'Настя'],
+    answers: ['График изменения курса за последние 12 месяцев', 'График изменения курса за последние 24 месяца', 'График изменения курса за последние 6 месяцев', 'Настя'],
 	illustration: 'img/graph.jpg',
 	value: [0, 1, 2, 3]
 },
@@ -50,13 +50,13 @@ var testQuestions = [
 	value: [0, 1, 2]
 },
 {
-	question: 'Что лучше AMD или Nvidia?',
+    question: 'Что лучше: AMD или Nvidia?',
 	answers: ['AMD'],
 	illustration: 'img/amd.jpg',
 	value: [0]
 },
 {
-	question: 'Петро это... ',
+    question: 'Петро - это... ',
 	answers: ['Крипта', 'Имя владельца шоколадной фабрики', 'Компьютерный вирус'],
 	illustration: 'img/petro.jpg',
 	value: [2, 0, 1]
@@ -146,7 +146,7 @@ var resultsQuantity = testResult.length-1; //because 0 score is default
 var CurrentUrl = window.location.href;
 var ogTitle =  $('meta[property="og:description"]').attr('content');
 var progress = 0;
-
+var socialListSize = $('.share-container ul li').length;
 
 
 
@@ -154,6 +154,26 @@ $('.title').text(testTitle.title);
 $('.description').html(testTitle.description);
 $('.illustration').attr('src', testTitle.illustration);
 
+//social icons animation 
+ var ulChildCounter = 1;
+function socialIconsAnimation() {
+
+  $('.share-container ul li:nth-child('+ulChildCounter+')').addClass('animate');
+  $('.share-container ul li:nth-child('+(ulChildCounter-1)+')').removeClass('animate');
+
+ 	setTimeout(function() {
+
+  	ulChildCounter++
+
+
+    if (ulChildCounter > socialListSize+1) {
+ 		$('.share-container ul li').removeClass('animate');
+    	 ulChildCounter = 1;
+    }
+  }, 1000);
+}
+
+//progress bar 
 function progressBar() {
 	progress +=100/testQuestions.length; 
 	$('.progress-bar span').text(counter + '/' + testQuestions.length);
@@ -207,6 +227,9 @@ function testResultsShow() {
 	$('.title').text(testResult[testResultShow].title);
 	$('<div class="results-name-container text-center"><h2 class="results-name">'+testResult[testResultShow].resultsName+'</h2></div>').insertAfter('.title').animate({opacity: '1'},1000);
 	$('.tip-jumbotron').append('<div class="jumbotron"><h3>'+testResult[testResultShow].tipTitle+'</h3><p>'+testResult[testResultShow].tipText+'</p></div>');
+	setInterval(function() {
+  		socialIconsAnimation();
+	}, 500);
 }
 
 //show tests results
