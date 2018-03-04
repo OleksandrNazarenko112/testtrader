@@ -142,7 +142,19 @@ header p {
 	border-radius: 39px;
 	color: #eee;
 }
-
+.progress {
+	display: none;
+}
+.progress-bar span {
+	color: #fff;
+	margin-left: 10px;
+}
+.progress-bar {
+	background-color: #5cb85c;
+}
+.results-name-container {
+	opacity: 0;
+}
 
 /*-- social-icons --*/
 
@@ -226,10 +238,14 @@ header p {
 
 @media(max-width: 414px) {
 	.title {
-		font-size: 22px;
+		font-size: 19px;
 	}
 	.description {
-		font-size: 16px;
+		font-size: 14px;
+	}
+
+	.radio label {
+    	font-size: 14px;
 	}
 
 	.share-container h4 {
@@ -245,14 +261,17 @@ header p {
 	.container .jumbotron {
 		text-align: center;
 	}
+	.illustration {
+		height: 200px;
+	}
 }
 
 @media(max-width: 320px) {
-	.title {
-		font-size: 22px;
-	}
 	.results-name {
-    font-size: 17px;
+    	font-size: 17px;
+	}
+	.start-btn {
+		font-size: 18px;
 	}
 }
 

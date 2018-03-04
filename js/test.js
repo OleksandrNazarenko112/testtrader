@@ -136,7 +136,7 @@ var testResult =[
 }
 ];
 
-var counter= 0;
+var counter = 0;
 var overallScore = 0;
 var checked = 0;
 var maxScore = 0;
@@ -145,26 +145,21 @@ var testResultShow;
 var resultsQuantity = testResult.length-1; //because 0 score is default
 var CurrentUrl = window.location.href;
 var ogTitle =  $('meta[property="og:description"]').attr('content');
+var progress = 0;
 
 
-//preload images for better perfomance and maxScore for test
-for(var k = 0; k < testQuestions.length; k++){
-
-	maxScore = maxScore + Math.max.apply(null, testQuestions[k].value);
-
-	$('.preload').append('<img src="'+testQuestions[k].illustration+'">');
-
-}
-for(var d = 0; d < testResult.length; d++){
-
-	$('.preload').append('<img src="'+testResult[d].illustration+'">');
-
-}
 
 
 $('.title').text(testTitle.title);
 $('.description').html(testTitle.description);
 $('.illustration').attr('src', testTitle.illustration);
+
+function progressBar() {
+	progress +=100/testQuestions.length; 
+	$('.progress-bar span').text(counter + '/' + testQuestions.length);
+	$('.progress').show(500);
+	$('.progress-bar').css('width', progress +'%')
+}
 
 $('.start-btn').on('click', function(){
 
@@ -198,11 +193,11 @@ $('input:radio[name="radio"]').change(
 		overallScore = parseInt($( "input:checked" ).val()) + parseInt(overallScore);
 		checked++
  });
-
+progressBar()
 	}
 
 function testResultsShow() {
-
+	$('.progress').hide(500);
 	$('.start-btn').addClass('hide');
 	$('.question-items').addClass('hide');
 	$('.title').css({'height': 'auto','padding-bottom': '20px'});
@@ -210,9 +205,8 @@ function testResultsShow() {
 	$('.illustration').attr('src', testResult[testResultShow].illustration);
 	$('.description').removeClass('hide').text(testResult[testResultShow].description).css('text-align', 'center');
 	$('.title').text(testResult[testResultShow].title);
-	$('<div class="results-name-container text-center"><h2 class="results-name">'+testResult[testResultShow].resultsName+'</h2></div>').insertAfter('.title');
+	$('<div class="results-name-container text-center"><h2 class="results-name">'+testResult[testResultShow].resultsName+'</h2></div>').insertAfter('.title').animate({opacity: '1'},1000);
 	$('.tip-jumbotron').append('<div class="jumbotron"><h3>'+testResult[testResultShow].tipTitle+'</h3><p>'+testResult[testResultShow].tipText+'</p></div>');
-	console.log(checked);
 }
 
 //show tests results
@@ -293,5 +287,17 @@ $('.btn-facebook').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' 
 $('.btn-vk').attr('href', 'http://vkontakte.ru/share.php?url=' + CurrentUrl);
 $('.btn-twitter').attr('href', 'https://twitter.com/intent/tweet?text=' + ogTitle + ' ' + CurrentUrl);
 
+//preload images for better perfomance and maxScore for test
+for(var k = 0; k < testQuestions.length; k++){
 
+	maxScore = maxScore + Math.max.apply(null, testQuestions[k].value);
+
+	$('.preload').append('<img src="'+testQuestions[k].illustration+'">');
+
+}
+for(var d = 0; d < testResult.length; d++){
+
+	$('.preload').append('<img src="'+testResult[d].illustration+'">');
+
+}
 
