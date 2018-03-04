@@ -238,14 +238,10 @@ header p {
 
 @media(max-width: 414px) {
 	.title {
-		font-size: 19px;
+		font-size: 22px;
 	}
 	.description {
-		font-size: 14px;
-	}
-
-	.radio label {
-    	font-size: 14px;
+		font-size: 16px;
 	}
 
 	.share-container h4 {
@@ -261,14 +257,14 @@ header p {
 	.container .jumbotron {
 		text-align: center;
 	}
-	.illustration {
-		height: 200px;
-	}
 }
 
 @media(max-width: 320px) {
+	.title {
+		font-size: 22px;
+	}
 	.results-name {
-    	font-size: 17px;
+    font-size: 17px;
 	}
 	.start-btn {
 		font-size: 18px;
